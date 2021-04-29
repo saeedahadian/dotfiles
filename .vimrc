@@ -1,118 +1,61 @@
-"=======================================================================
-"   vim-plug
-"-----------------------------------------------------------------------
+"====================
+" PLUGINS (vim-plug)
+"--------------------
 call plug#begin('~/.vim/plugged')
 
-" Visual & Beauty
+"" Visual & Beauty
 Plug 'morhetz/gruvbox'                " My beloved colorscheme
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'        " Comprehensive status line
+Plug 'vim-airline/vim-airline-themes' " Status line
 Plug 'ryanoasis/vim-devicons'         " Devicons for file types
 Plug 'preservim/nerdtree'             " Tree Explorer
 Plug 'junegunn/goyo.vim'              " Distraction-free writing
 Plug 'junegunn/limelight.vim'         " Hyperfocus writing by changing line opacity
+Plug 'psliwka/vim-smoothie'           " Smooth scrolling for VIM
+Plug 'haya14busa/incsearch.vim'       " Highlight search results while typing
 
-" Funcionality Enhancement for Coding
+"" Funcionality Enhancement for Coding
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }   " Conquer of Completion
-"Plug 'sheerun/vim-polyglot'    " Makes startups SOOO slow!
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
 Plug 'tmux-plugins/vim-tmux-focus-events' " Enabling focus events like gvim
 Plug 'kien/ctrlp.vim'                 " ctrlp fuzzy file finder
+Plug '907th/vim-auto-save'            " Enabling auto-save in vim
 
 call plug#end()
 " End of the plugin list
 
-
-"=======================================================================
-"   Basic Configurations
-"-----------------------------------------------------------------------
-"set autoread                        " Reload on external file changes
-"set backspace=indent,eol,start      " backspace behavior
-"set clipboard=unnamed,unnamedplus   " Enable clipboard
-set mouse=a                         " Enable mouse support
-
+"======================
+" BASIC CONFIGURATIONS
+"----------------------
 filetype plugin indent on
+set mouse=a                         " Enable mouse support
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
 set smarttab
+set termbidi  " To support rtl for Farsi & Arabic
+set hlsearch  " Highlight searches
 set directory=$HOME/.vim/swp//      " Handle swap files in a separate folder
 set backupdir=~/.vim/.backup//      " Handle backup files in a separate folder
-
 set autoread                         " Automatically update buffer with newest changes
 au FocusGained,BufEnter * :checktime " Trigger autoread when changing buffers
 
-"=======================================================================
-"   Colorscheme & Visual Configurations
-"-----------------------------------------------------------------------
+"======================================
+" COLORSCHEME & VISUAL CONFIGURATIONS
+"--------------------------------------
 
-" Make lightline visible on startup.
-set laststatus=2
-set noshowmode
-let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-			\             [ 'gitbranch', 'readonly', 'filename', 'modified', 'coc_error', 'coc_warning', 'coc_hint', 'coc_info' ] ],
-      \   'right': [ [ 'lineinfo', ],
-      \              [ 'percent' ],
-      \              [ 'fileformat', 'fileencoding', 'filetype'] ]
-			\ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead',
-      \ },
-      \ 'component_expand': {
-      \   'coc_error': 'LightlineCocErrors',
-      \   'coc_warning': 'LightlineCocWarnings',
-      \   'coc_info': 'LightlineCocInfos',
-      \   'coc_hint': 'LightlineCocHints',
-      \   'coc_fix': 'LightlineCocFixes',
-      \ },
-      \ }
+"" Airline
+let g:airline#extensions#tabline#enabled = 1
 
-let g:lightline.component_type = {
-\   'coc_error'        : 'error',
-\   'coc_warning'      : 'warning',
-\   'coc_info'         : 'tabsel',
-\   'coc_hint'         : 'middle',
-\   'coc_fix'          : 'middle',
-\ }
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
 
-function! s:lightline_coc_diagnostic(kind, sign) abort
-  let info = get(b:, 'coc_diagnostic_info', 0)
-  if empty(info) || get(info, a:kind, 0) == 0
-    return ''
-  endif
-  try
-    let s = g:coc_user_config['diagnostic'][a:sign . 'Sign']
-  catch
-    let s = ''
-  endtry
-  return printf('%s %d', s, info[a:kind])
-endfunction
-
-function! LightlineCocErrors() abort
-  return s:lightline_coc_diagnostic('error', 'error')
-endfunction
-
-function! LightlineCocWarnings() abort
-  return s:lightline_coc_diagnostic('warning', 'warning')
-endfunction
-
-function! LightlineCocInfos() abort
-  return s:lightline_coc_diagnostic('information', 'info')
-endfunction
-
-function! LightlineCocHints() abort
-  return s:lightline_coc_diagnostic('hints', 'hint')
-endfunction
-
-autocmd User CocDiagnosticChange call lightline#update()
-
-" Gruvbox theme
+"" Gruvbox theme
 set termguicolors   " 256-colors (so vivid!)
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_bold = 1
@@ -127,41 +70,33 @@ set cursorline    " Highlight the line under the cursor
 set colorcolumn=72,79   " Line length limit
 
 " Shortcut for toggling NERDTree
-"map <C-j> :NERDTreeToggle<CR>
 nmap <leader>t :NERDTreeToggle<CR>
-
-set termbidi  " To support rtl for Farsi & Arabic
-
-set hlsearch  " Highlight searches
 
 " Goyo Settings
 nmap <leader>g :Goyo<CR>
 
 function! s:goyoEnter()
-  "Limelight0.7
+  Limelight0.7
   set colorcolumn=72    " Only comment bar needs to be shown
   highlight ColorColumn guibg=#3C3836 guifg=#EBDBB2
 endfunction
 
 function! s:goyoLeave()
-  "Limelight!
+  Limelight!
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyoEnter()
 autocmd! User GoyoLeave nested call <SID>goyoLeave()
 
-"=======================================================================
-"   Functionality Enhancing Configurations
-"-----------------------------------------------------------------------
+"=========================================
+" FUNCTIONALITY ENHANCING CONFIGURATIONS
+"-----------------------------------------
+
+"" UltiSnips
 let g:UltiSnipsEditSplit = 'vertical'
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-
-let g:fake_src_paths = ['/home/saeed/.vim/plugged/vim-fake/src']
-
-" Change .ejs filetypes to .html
-au BufRead,BufNewFile *.ejs set filetype=html
 
 " Disable folding in markdown files.
 let g:vim_markdown_folding_disabled = 1
@@ -170,9 +105,12 @@ let g:vim_markdown_folding_disabled = 1
 nnoremap <leader>wd :<C-U>call win_execute(win_getid(winnr('#')), "normal! \<C-D>")<CR>
 nnoremap <leader>wu :<C-U>call win_execute(win_getid(winnr('#')), "normal! <Bslash><lt>C-U>")<CR>
 
-"=======================================================================
-"   Conquer of Completion (Coc) configuration
-"-----------------------------------------------------------------------
+" Enable auto-save on startup
+let g:auto_save = 1
+
+"====================
+" IntelliSense (CoC)
+"--------------------
 " TextEdit might fail if hidden is not set.
 set hidden
 
@@ -181,7 +119,7 @@ set nobackup
 set nowritebackup
 
 " Give more space for dispalying messages.
-"set cmdheight=2
+set cmdheight=2
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -256,9 +194,7 @@ command! -nargs=0 Format :call CocAction('format')
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
-"==============================================
 " coc-snippets configuration
-"----------------------------------------------
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
 
@@ -270,12 +206,3 @@ let g:coc_snippet_next = '<c-j>'
 
 " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
 let g:coc_snippet_prev = '<c-k>'
-
-"=======================
-" Black Configurations
-"-----------------------
-" Format on save.
-autocmd BufWritePre *.py execute ':Black'
-
-" Run Black on F9.
-nnoremap <F9> :Black<CR>
