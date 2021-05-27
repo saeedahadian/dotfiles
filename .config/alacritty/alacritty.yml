@@ -402,7 +402,7 @@ background_opacity: 0.94
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: /bin/bash
+  program: /bin/fish
   args:
     - -l
     - -c
