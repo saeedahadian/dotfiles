@@ -1,0 +1,13 @@
+"======================
+" BASIC CONFIGURATIONS
+"----------------------
+filetype plugin indent on
+set mouse=a   " Enable mouse support
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+set smarttab
+set termbidi  " To support rtl for Farsi & Arabic
+set hlsearch  " Highlight searches
+set autoread  " Automatically update buffer with newest changes
