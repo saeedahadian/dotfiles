@@ -3,3 +3,5 @@ alias ls=exa
 alias cat=bat
 alias vim=nvim
 alias grep="grep --color=always"
+alias ..='cd ..'
+alias ~='cd ~'

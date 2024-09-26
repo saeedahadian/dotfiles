@@ -25,5 +25,8 @@ local nvimtree = require("nvim-tree.api")
 wk.add({
 	{ "<localleader>ff", telescope.find_files, desc = "Telescope find files", mode = "n" },
 	{ "<localleader>fg", telescope.live_grep, desc = "Telescope live grep", mode = "n" },
-	{ "<localleader>t", nvimtree.tree.toggle, desc = "Nvim-tree toggle", mode = "n" },
+	{ "<localleader>t", function ()
+		nvimtree.tree.toggle({ find_file = true })
+	end, desc = "Nvim-tree find file and toggle", mode = "n" },
+	{ "<localleader>g", "<cmd>ZenMode<cr>", desc = "Toggle zen mode", mode = "n" },
 })
