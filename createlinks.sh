@@ -14,3 +14,7 @@ ln -s $(pwd)/powerlevel10k/powerlevel10k.zsh-theme $(pwd)/.zsh_functions/powerle
 ln -s $(pwd)/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh $(pwd)/.zsh_functions/zsh-syntax-highlighting.zsh
 
 ln -s $(pwd)/.tmux.conf ~/.tmux.conf
+
+ln -s $(pwd)/nvim ~/.config/nvim
+
+ln -s $(pwd)/.aliases ~/.aliases
