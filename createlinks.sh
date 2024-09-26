@@ -12,3 +12,5 @@ ln -s $(pwd)/.zsh_functions ~/.zsh_functions
 
 ln -s $(pwd)/powerlevel10k/powerlevel10k.zsh-theme $(pwd)/.zsh_functions/powerlevel10k.zsh-theme
 ln -s $(pwd)/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh $(pwd)/.zsh_functions/zsh-syntax-highlighting.zsh
+
+ln -s $(pwd)/.tmux.conf ~/.tmux.conf

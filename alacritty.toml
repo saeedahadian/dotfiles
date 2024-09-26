@@ -1,5 +1,5 @@
 [shell]
-program = "/bin/zsh"
+program = "tmux"
 
 [window]
 startup_mode = "Fullscreen"
@@ -9,7 +9,7 @@ opacity = 0.9
 
 [font]
 normal = { family = "FiraCode Nerd Font Mono", style = "Retina" }
-size = 14
+size = 12
 
 [mouse]
 hide_when_typing = true
