@@ -1,0 +1,1 @@
+/home/saeed/Sources/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

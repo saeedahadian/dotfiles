@@ -1,0 +1,1 @@
+/home/saeed/Sources/dotfiles/powerlevel10k/powerlevel10k.zsh-theme
