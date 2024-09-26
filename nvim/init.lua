@@ -4,6 +4,9 @@ require("config.lazy")
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+vim.opt.number = true
+vim.opt.relativenumber = true
+
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
 
@@ -11,6 +14,10 @@ require("gitsigns").setup()
 require("nvim-web-devicons").setup()
 require("lualine").setup()
 require("nvim-tree").setup()
+
+require('lspconfig').phpactor.setup{}
+require'lspconfig'.rust_analyzer.setup{}
+require'lspconfig'.twiggy_language_server.setup{}
 
 local wk = require("which-key")
 local telescope = require("telescope.builtin")
