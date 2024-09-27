@@ -11,3 +11,4 @@
 + Neovim
 + Powerlevel10k
 + Zsh Syntax Highlighting
+
