@@ -10,20 +10,19 @@ vim.opt.relativenumber = true
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
 
-require("gitsigns").setup()
-require("nvim-web-devicons").setup()
-require("lualine").setup()
-require("nvim-tree").setup()
-require("telescope").setup()
-require("mason").setup()
-require("mason-lspconfig").setup()
+vim.notify = require("notify")
+
+require("config.gitsigns")
+require("config.devicons")
+require("config.lualine")
+require("config.nvimtree")
+require("config.telescope")
+require("config.mason")
+require("config.mason-lspconfig")
 
 local wk = require("which-key")
-local telescope = require("telescope.builtin")
 local nvimtree = require("nvim-tree.api")
 wk.add({
-	{ "<localleader>ff", telescope.find_files, desc = "Telescope find files", mode = "n" },
-	{ "<localleader>fg", telescope.live_grep, desc = "Telescope live grep", mode = "n" },
 	{ "<localleader>t", function ()
 		nvimtree.tree.toggle({ find_file = true })
 	end, desc = "Nvim-tree find file and toggle", mode = "n" },
