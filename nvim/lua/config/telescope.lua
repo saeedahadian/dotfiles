@@ -13,6 +13,15 @@ wk.add({
 
 require('telescope').setup({
   defaults = {
-	  layout_strategy = 'horizontal',
+          vimgrep_arguments = {
+          	"rg",
+          	"--color=never",
+          	"--no-heading",
+          	"--with-filename",
+          	"--line-number",
+          	"--column",
+          	"--smart-case",
+		"--no-ignore"
+        }
   }
 })

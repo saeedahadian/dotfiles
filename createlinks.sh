@@ -7,6 +7,9 @@ sudo update-desktop-database
 mkdir -p ~/.config/alacritty
 ln -s $(pwd)/alacritty.toml ~/.config/alacritty/alacritty.toml
 
+mkdir -p ~/.config/phpactor
+ln -s $(pwd)/phpactor.json ~/.config/phpactor/phpactor.json
+
 ln -s $(pwd)/.zshrc ~/.zshrc
 ln -s $(pwd)/.zsh_functions ~/.zsh_functions
 

@@ -19,6 +19,7 @@ require("config.nvimtree")
 require("config.telescope")
 require("config.mason")
 require("config.mason-lspconfig")
+require("config.cmp")
 
 local wk = require("which-key")
 local nvimtree = require("nvim-tree.api")

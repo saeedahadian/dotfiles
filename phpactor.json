@@ -1,0 +1,8 @@
+{
+	"indexer.enabled_watchers": [
+		"watchman",
+		"lsp",
+		"php"
+	],
+	"indexer.exclude_patterns": []
+}
