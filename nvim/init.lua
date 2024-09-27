@@ -14,6 +14,7 @@ require("gitsigns").setup()
 require("nvim-web-devicons").setup()
 require("lualine").setup()
 require("nvim-tree").setup()
+require("telescope").setup()
 
 require('lspconfig').phpactor.setup{}
 require'lspconfig'.rust_analyzer.setup{}
