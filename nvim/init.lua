@@ -15,10 +15,8 @@ require("nvim-web-devicons").setup()
 require("lualine").setup()
 require("nvim-tree").setup()
 require("telescope").setup()
-
-require('lspconfig').phpactor.setup{}
-require'lspconfig'.rust_analyzer.setup{}
-require'lspconfig'.twiggy_language_server.setup{}
+require("mason").setup()
+require("mason-lspconfig").setup()
 
 local wk = require("which-key")
 local telescope = require("telescope.builtin")
@@ -30,4 +28,5 @@ wk.add({
 		nvimtree.tree.toggle({ find_file = true })
 	end, desc = "Nvim-tree find file and toggle", mode = "n" },
 	{ "<localleader>g", "<cmd>ZenMode<cr>", desc = "Toggle zen mode", mode = "n" },
+	{ "gx", "<cmd>silent !xdg-open <cfile><CR>", desc = "Open link under cursor in your default browser", mode = "n" },
 })

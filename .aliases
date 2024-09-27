@@ -4,5 +4,8 @@ alias cat=bat
 alias vim=nvim
 alias grep="grep --color=always"
 alias ..='cd ..'
+alias ../..='cd ../..'
+alias ../../..='cd ../../..'
+alias ../../..='cd ../../../..'
 alias ~='cd ~'
 alias docker-compose='docker compose'
