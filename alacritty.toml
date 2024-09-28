@@ -1,5 +1,6 @@
 [shell]
-program = "tmux"
+program = "/bin/bash"
+args = [ "-l", "-c", "tmux attach || tmux" ]
 
 [window]
 startup_mode = "Fullscreen"

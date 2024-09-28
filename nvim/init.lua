@@ -10,6 +10,8 @@ vim.opt.relativenumber = true
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
 
+vim.cmd.colorscheme('catppuccin-mocha')
+
 vim.notify = require("notify")
 
 require("config.gitsigns")
